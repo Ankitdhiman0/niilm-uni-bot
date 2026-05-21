@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>NIILM AI Assistant</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body
+    class="min-h-screen overflow-hidden bg-[#f4f7ff] dark:bg-[#020617] transition-all duration-300"
+  >
+    <!-- Background Glow -->
+    <div
+      class="absolute top-[-150px] left-[-100px] w-[400px] h-[400px] bg-indigo-500/20 blur-[120px] rounded-full"
+    ></div>
+
+    <div
+      class="absolute bottom-[-200px] right-[-100px] w-[400px] h-[400px] bg-pink-500/20 blur-[120px] rounded-full"
+    ></div>
+
+    <!-- APP -->
+    <section class="relative z-10 h-screen p-3 md:p-5">
+      <div
+        class="w-full h-full max-w-7xl mx-auto rounded-[36px] border border-white/20 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col"
+      >
+        <!-- TOP BAR -->
+        <nav
+          class="px-6 py-5 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 backdrop-blur-xl"
+        >
+          <!-- Left -->
+          <div class="flex items-center gap-4">
+            <div
+              class="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-xl"
+            >
+              <div
+                class="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-sm"
+              ></div>
+
+              <i class="fas fa-graduation-cap text-white text-xl z-10"></i>
+            </div>
+
+            <div>
+              <h1
+                class="text-2xl font-bold tracking-tight text-slate-800 dark:text-white"
+              >
+                NIILM AI
+              </h1>
+
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                Smart University Assistant
+              </p>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="flex items-center gap-3">
+            <!-- Clear Chat -->
+            <button
+              onclick="clearHistory()"
+              class="px-4 h-11 rounded-2xl bg-red-500/10 dark:bg-red-500/20 border border-red-500/20 text-red-500 hover:scale-105 transition-all duration-200 flex items-center gap-2"
+            >
+              <i class="fas fa-trash"></i>
+
+              <span class="hidden md:block text-sm font-medium"> Clear </span>
+            </button>
+
+            <!-- Theme -->
+            <button
+              onclick="toggleDark()"
+              class="w-11 h-11 rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:scale-105 transition"
+            >
+              🌙
+            </button>
+          </div>
+        </nav>
+
+        <!-- CHAT -->
+        <main
+          id="chatMessages"
+          class="flex-1 overflow-y-auto px-4 md:px-6 py-6 space-y-6"
+        >
+          <!-- HERO CARD -->
+          <div
+            class="relative overflow-hidden rounded-[24px] px-8 p-6 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center"
+          >
+            <!-- Blur -->
+            <div
+              class="absolute top-0 right-0 w-48 h-48 bg-white/10 blur-3xl rounded-full"
+            ></div>
+
+            <!-- Content -->
+            <div class="relative z-10">
+              <h2 class="text-2xl font-bold text-center mb-2">
+                Welcome to NIILM Assistant
+              </h2>
+
+              <p class="text-indigo-100 max-w-xl">
+                Ask anything related to admissions, courses, fees, eligibility,
+                placements, or university details.
+              </p>
+
+              <p
+                class="text-indigo-100 max-w-xl mt-[1rem] text-center font-semibold p-1 border rounded-2xl"
+              >
+                Please enter exact names of courses to get the details of course
+                like M.Sc not msc.
+              </p>
+
+              <!-- Chips -->
+              <div class="flex flex-wrap gap-3 mt-6 text-black dark:text-white">
+                <button class="quick-btn">Courses</button>
+
+                <button class="quick-btn">Admission</button>
+
+                <button class="quick-btn">Fees</button>
+
+                <button class="quick-btn">Contact</button>
+
+                <button class="quick-btn">MBA</button>
+
+                <button class="quick-btn">BCA</button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- INPUT -->
+        <footer
+          class="p-4 md:p-5 border-t border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 backdrop-blur-xl"
+        >
+          <div
+            class="flex items-center gap-3 rounded-[28px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-4 shadow-lg"
+          >
+            <!-- Input -->
+            <input
+              id="messageInput"
+              type="text"
+              placeholder="Ask about MBA, BCA, fees, admissions..."
+              class="flex-1 bg-transparent outline-none text-[15px] text-slate-700 dark:text-white placeholder:text-slate-400"
+            />
+
+            <!-- Stop -->
+            <button
+              id="stopBtn"
+              class="hidden w-12 h-12 rounded-2xl bg-red-500 text-white flex items-center justify-center hover:scale-105 transition"
+            >
+              <i class="fas fa-stop"></i>
+            </button>
+
+            <!-- Send -->
+            <button
+              id="sendBtn"
+              class="w-14 h-14 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl flex items-center justify-center hover:scale-105 transition"
+            >
+              <i class="fas fa-paper-plane text-lg"></i>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
