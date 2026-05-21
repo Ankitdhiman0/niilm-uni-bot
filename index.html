@@ -21,63 +21,69 @@
   >
     <!-- Background Glow -->
     <div
-      class="absolute top-[-150px] left-[-100px] w-[400px] h-[400px] bg-indigo-500/20 blur-[120px] rounded-full"
+      class="fixed top-[-180px] left-[-120px] w-[260px] sm:w-[400px] h-[260px] sm:h-[400px] bg-indigo-500/20 blur-[100px] rounded-full pointer-events-none"
     ></div>
 
     <div
-      class="absolute bottom-[-200px] right-[-100px] w-[400px] h-[400px] bg-pink-500/20 blur-[120px] rounded-full"
+      class="fixed bottom-[-200px] right-[-120px] w-[260px] sm:w-[400px] h-[260px] sm:h-[400px] bg-pink-500/20 blur-[100px] rounded-full pointer-events-none"
     ></div>
 
     <!-- APP -->
-    <section class="relative z-10 h-screen p-3 md:p-5">
+    <section class="relative z-10 h-screen p-2 sm:p-4">
       <div
-        class="w-full h-full max-w-7xl mx-auto rounded-[36px] border border-white/20 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col"
+        class="w-full h-full max-w-7xl mx-auto rounded-[24px] sm:rounded-[36px] border border-white/20 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col"
       >
         <!-- TOP BAR -->
         <nav
-          class="px-6 py-5 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 backdrop-blur-xl"
+          class="px-3 sm:px-6 py-3 sm:py-5 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 backdrop-blur-xl"
         >
           <!-- Left -->
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 sm:gap-4 min-w-0">
+            <!-- Logo -->
             <div
-              class="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-xl"
+              class="relative min-w-[48px] w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-xl"
             >
               <div
                 class="absolute inset-0 rounded-2xl bg-white/20 backdrop-blur-sm"
               ></div>
 
-              <i class="fas fa-graduation-cap text-white text-xl z-10"></i>
+              <i
+                class="fas fa-graduation-cap text-white text-base sm:text-xl z-10"
+              ></i>
             </div>
 
-            <div>
+            <!-- Text -->
+            <div class="min-w-0">
               <h1
-                class="text-2xl font-bold tracking-tight text-slate-800 dark:text-white"
+                class="text-lg sm:text-2xl font-bold tracking-tight text-slate-800 dark:text-white truncate"
               >
                 NIILM AI
               </h1>
 
-              <p class="text-sm text-slate-500 dark:text-slate-400">
+              <p
+                class="text-[11px] sm:text-sm text-slate-500 dark:text-slate-400 truncate"
+              >
                 Smart University Assistant
               </p>
             </div>
           </div>
 
           <!-- Right -->
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2 sm:gap-3">
             <!-- Clear Chat -->
             <button
               onclick="clearHistory()"
-              class="px-4 h-11 rounded-2xl bg-red-500/10 dark:bg-red-500/20 border border-red-500/20 text-red-500 hover:scale-105 transition-all duration-200 flex items-center gap-2"
+              class="px-3 sm:px-4 h-10 sm:h-11 rounded-xl sm:rounded-2xl bg-red-500/10 dark:bg-red-500/20 border border-red-500/20 text-red-500 hover:scale-105 transition-all duration-200 flex items-center gap-2 shrink-0"
             >
-              <i class="fas fa-trash"></i>
+              <i class="fas fa-trash text-sm"></i>
 
-              <span class="hidden md:block text-sm font-medium"> Clear </span>
+              <span class="hidden lg:block text-sm font-medium"> Clear </span>
             </button>
 
             <!-- Theme -->
             <button
               onclick="toggleDark()"
-              class="w-11 h-11 rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:scale-105 transition"
+              class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:scale-105 transition shrink-0"
             >
               🌙
             </button>
@@ -87,37 +93,50 @@
         <!-- CHAT -->
         <main
           id="chatMessages"
-          class="flex-1 overflow-y-auto px-4 md:px-6 py-6 space-y-6"
+          class="flex-1 overflow-y-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6"
         >
           <!-- HERO CARD -->
           <div
-            class="relative overflow-hidden rounded-[24px] px-8 p-6 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white flex items-center justify-center"
+            class="relative overflow-hidden rounded-[20px] sm:rounded-[24px] p-4 sm:p-8 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 text-white"
           >
             <!-- Blur -->
             <div
-              class="absolute top-0 right-0 w-48 h-48 bg-white/10 blur-3xl rounded-full"
+              class="absolute top-0 right-0 w-32 sm:w-48 h-32 sm:h-48 bg-white/10 blur-3xl rounded-full"
             ></div>
 
             <!-- Content -->
             <div class="relative z-10">
-              <h2 class="text-2xl font-bold text-center mb-2">
+              <h2
+                class="text-xl sm:text-2xl font-bold text-center mb-3 leading-tight"
+              >
                 Welcome to NIILM Assistant
               </h2>
 
-              <p class="text-indigo-100 max-w-xl">
+              <p
+                class="text-sm sm:text-base text-indigo-100 text-center max-w-2xl mx-auto leading-relaxed"
+              >
                 Ask anything related to admissions, courses, fees, eligibility,
                 placements, or university details.
               </p>
 
-              <p
-                class="text-indigo-100 max-w-xl mt-[1rem] text-center font-semibold p-1 border rounded-2xl"
+              <!-- Notice -->
+              <div
+                class="mt-4 sm:mt-5 p-3 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md"
               >
-                Please enter exact names of courses to get the details of course
-                like M.Sc not msc.
-              </p>
+                <p
+                  class="text-xs sm:text-sm text-center text-indigo-100 font-medium leading-relaxed"
+                >
+                  Please enter exact course names like
+                  <span class="font-bold text-white">M.Sc</span>
+                  instead of
+                  <span class="font-bold text-white">msc</span>
+                </p>
+              </div>
 
               <!-- Chips -->
-              <div class="flex flex-wrap gap-3 mt-6 text-black dark:text-white">
+              <div
+                class="flex flex-wrap justify-center gap-2 sm:gap-3 mt-5 sm:mt-6"
+              >
                 <button class="quick-btn">Courses</button>
 
                 <button class="quick-btn">Admission</button>
@@ -136,33 +155,33 @@
 
         <!-- INPUT -->
         <footer
-          class="p-4 md:p-5 border-t border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 backdrop-blur-xl"
+          class="p-3 sm:p-5 border-t border-slate-200 dark:border-slate-800 bg-white/40 dark:bg-slate-900/30 backdrop-blur-xl"
         >
           <div
-            class="flex items-center gap-3 rounded-[28px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-4 shadow-lg"
+            class="flex items-center gap-2 sm:gap-3 rounded-[22px] sm:rounded-[28px] border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 sm:px-5 py-3 sm:py-4 shadow-lg"
           >
             <!-- Input -->
             <input
               id="messageInput"
               type="text"
-              placeholder="Ask about MBA, BCA, fees, admissions..."
-              class="flex-1 bg-transparent outline-none text-[15px] text-slate-700 dark:text-white placeholder:text-slate-400"
+              placeholder="Ask about MBA, BCA, fees..."
+              class="flex-1 min-w-0 bg-transparent outline-none text-sm sm:text-[15px] text-slate-700 dark:text-white placeholder:text-slate-400"
             />
 
             <!-- Stop -->
             <button
               id="stopBtn"
-              class="hidden w-12 h-12 rounded-2xl bg-red-500 text-white flex items-center justify-center hover:scale-105 transition"
+              class="hidden w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-red-500 text-white flex items-center justify-center hover:scale-105 transition shrink-0"
             >
-              <i class="fas fa-stop"></i>
+              <i class="fas fa-stop text-sm"></i>
             </button>
 
             <!-- Send -->
             <button
               id="sendBtn"
-              class="w-14 h-14 rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl flex items-center justify-center hover:scale-105 transition"
+              class="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl flex items-center justify-center hover:scale-105 transition shrink-0"
             >
-              <i class="fas fa-paper-plane text-lg"></i>
+              <i class="fas fa-paper-plane text-sm sm:text-lg"></i>
             </button>
           </div>
         </footer>
